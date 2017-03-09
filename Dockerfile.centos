@@ -1,0 +1,23 @@
+FROM centos
+MAINTAINER JeongHoon Baek <coalash@gmail.com>
+
+RUN yum -y install deltarpm openssl && \
+  yum -y install curl wget gcc glibc-devel make ncurses-devel openssl-devel sqlite-devel libevent-devel autoconf git
+
+RUN wget http://downloads.dlang.org/releases/2.x/2.073.1/dmd-2.073.1-0.fedora.x86_64.rpm && \
+  yum -y install dmd-2.073.1-0.fedora.x86_64.rpm
+
+# RUN wget https://code.dlang.org/files/dub-1.1.0-1.x86_64.rpm && \
+#   yum -y install dub-1.1.0-1.x86_64.rpm
+# RUN git clone https://github.com/owlchain/owlchain-core.git
+# RUN dub --build=unittest --compiler=dmd
+# RUN cd owlchain-core && ./unittest.sh
+
+RUN wget https://code.dlang.org/files/dub-1.2.1-linux-x86_64.tar.gz && \
+  tar xvzf dub*.tar.gz
+# owlchain-core 빌드
+RUN git clone https://github.com/owlchain/owlchain-core.git
+RUN cd owlchain-core && mv ../dub . && ./dub --build=unittest
+
+
+EXPOSE 8080
