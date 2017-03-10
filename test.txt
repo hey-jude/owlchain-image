@@ -1,0 +1,27 @@
+# docker 초기화
+
+docker-machine create --driver virtualbox default
+eval $(docker-machine env default)
+
+
+# build docker image
+
+docker build -t heyjude/owlchain .
+
+
+# exec
+docker-machine ip default
+
+docker run -p 8080:8080 -it heyjude/owlchain /bin/bash
+
+
+# etcd
+apt-get install uuid-runtime etcd
+
+
+
+# TODO
+1. auto discovery & consensus sample (using raft, ...) : etcd?
+2. command-line app with D 
+3. register Dockerfile to dockerhub : file-only? or images?
+4. test scenario
