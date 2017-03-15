@@ -3,6 +3,7 @@
 docker-machine create --driver virtualbox default
 eval $(docker-machine env default)
 
+docker-machine start
 
 # build docker image
 
