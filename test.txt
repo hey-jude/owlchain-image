@@ -5,6 +5,11 @@ eval $(docker-machine env default)
 
 docker-machine start
 
+
+# docker instance 제거
+docker-machine rm default
+
+
 # build docker image
 
 docker build -t heyjude/owlchain .
