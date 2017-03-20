@@ -1,0 +1,11 @@
+FROM heyjude/owlchain
+
+ENV CONFD_VERSION 0.9.0
+
+VOLUME /logs
+VOLUME /cores
+
+ADD install_stella_base /
+
+RUN /install_stella_base
+
