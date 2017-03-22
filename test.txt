@@ -19,6 +19,7 @@ docker build -t heyjude/owlchain .
 docker-machine ip default
 
 docker run -p 8080:8080 -it heyjude/owlchain /bin/bash
+docker run -p 8080:8080 -it heyjude/owlchain_tiny /bin/bash
 
 
 # etcd
