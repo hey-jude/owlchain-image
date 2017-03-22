@@ -1,0 +1,17 @@
+FROM base/archlinux
+MAINTAINER JeongHoon Baek <coalash@gmail.com>
+
+WORKDIR /root
+
+RUN pacman --noconfirm -Sy && pacman --noconfirm -S dmd liblphobos libphobos libphobos-devel libevent dub vim git && pacman --noconfirm -Scc
+
+# # owlchain-core build
+# RUN git clone -b docker https://github.com/owlchain/owlchain-core.git && \
+#  cd owlchain-core && ./build.sh
+
+# git clone https://github.com/owlchain/owlchain-core.git && cd owlchain-core && ./build.sh
+
+# RUN git clone https://github.com/hey-jude/owlnet.git && \
+#  cd owlnet && . ~/dlang/dmd-2.073.2/activate && dub build -v
+# git clone https://github.com/hey-jude/owlnet.git && cd owlnet && dub build -v
+EXPOSE 8080
